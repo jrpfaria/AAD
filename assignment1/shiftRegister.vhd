@@ -9,7 +9,7 @@ USE storeDev.all;
 
 ENTITY shiftRegister IS
 	PORT (
-		clk, load	: IN STD_LOGIC;
+		clk, sel		: IN STD_LOGIC;
 		nSet, nRst	: IN STD_LOGIC;
 		A				: IN STD_LOGIC;
 		B				: IN STD_LOGIC;
@@ -18,7 +18,7 @@ ENTITY shiftRegister IS
 END shiftRegister;
 
 ARCHITECTURE structure OF shiftRegister IS 
-	SIGNAL s0, s1, s2 : STD_LOGIC;
+	SIGNAL s0, s1, s2: STD_LOGIC;
 	COMPONENT flipFlopDPET
 		PORT (
 			clk, D		: IN STD_LOGIC;
@@ -39,10 +39,10 @@ ARCHITECTURE structure OF shiftRegister IS
 		);
 	END COMPONENT;
 	BEGIN
-		and0:	gateAnd2 PORT MAP (load, A, s0);
-		and1: gateAnd2 PORT MAP (load, B, s1);
-		or0 : gateOr2	PORT MAP (s0, s1, s2);
-		ff	 : flipFlopDPET PORT MAP (clk, s2, nSet, nRst, Y, open);
+		and0: gateAnd2 PORT MAP (NOT sel, A, s0);
+		and1: gateAnd2 PORT MAP (sel, B, s1);
+		or0:  gateOr2  PORT MAP (s0, s1, s2);
+		ff: flipFlopDPET PORT MAP (clk, s2, nSet, nRst, Y, open);
 END structure;
 	
 --ENTITY ShiftRegister8 IS
