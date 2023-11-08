@@ -31,13 +31,13 @@ ARCHITECTURE structure OF shiftRegister8 IS
 		parallelOut(1) <= f1;
 		ff2 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f1, parallelIn(2), f2);
 		parallelOut(2) <= f2;
-		ff3 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f2, parallelIn(1), f3);
+		ff3 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f2, parallelIn(3), f3);
 		parallelOut(3) <= f3;
-		ff4 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f3, parallelIn(2), f4);
+		ff4 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f3, parallelIn(4), f4);
 		parallelOut(4) <= f4;
-		ff5 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f4, parallelIn(1), f5);
+		ff5 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f4, parallelIn(5), f5);
 		parallelOut(5) <= f5;
-		ff6 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f5, parallelIn(2), f6);
+		ff6 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f5, parallelIn(6), f6);
 		parallelOut(6) <= f6;
-		ff7 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f6, parallelIn(1), parallelOut(7));
+		ff7 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f6, parallelIn(7), parallelOut(7));
 END structure;
