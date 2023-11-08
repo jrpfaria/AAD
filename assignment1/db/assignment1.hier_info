@@ -1,0 +1,42 @@
+|shiftRegister
+clk => flipFlopDPET:ff.clk
+load => gateAnd2:and0.x1
+load => gateAnd2:and1.x1
+nSet => flipFlopDPET:ff.nSet
+nRst => flipFlopDPET:ff.nRst
+A => gateAnd2:and0.x2
+B => gateAnd2:and1.x2
+Y <= flipFlopDPET:ff.Q
+
+
+|shiftRegister|gateAnd2:and0
+x1 => y.IN0
+x2 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shiftRegister|gateAnd2:and1
+x1 => y.IN0
+x2 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shiftRegister|gateOr2:or0
+x1 => y.IN0
+x2 => y.IN1
+y <= y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shiftRegister|flipFlopDPET:ff
+clk => nQ~reg0.CLK
+clk => Q~reg0.CLK
+D => Q~reg0.DATAIN
+D => nQ~reg0.DATAIN
+nSet => Q.IN0
+nRst => Q.IN1
+nRst => nQ~reg0.PRESET
+nRst => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+nQ <= nQ~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

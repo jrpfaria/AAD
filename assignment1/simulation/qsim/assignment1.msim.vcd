@@ -1,0 +1,349 @@
+$comment
+	File created using the following command:
+		vcd file assignment1.msim.vcd -direction
+$end
+$date
+	Wed Nov 08 16:47:47 2023
+$end
+$version
+	ModelSim Version 2020.1
+$end
+$timescale
+	1ps
+$end
+
+$scope module shiftregister_vhd_vec_tst $end
+$var wire 1 ! A $end
+$var wire 1 " B $end
+$var wire 1 # clk $end
+$var wire 1 $ load $end
+$var wire 1 % nRst $end
+$var wire 1 & nSet $end
+$var wire 1 ' Y $end
+
+$scope module i1 $end
+$var wire 1 ( gnd $end
+$var wire 1 ) vcc $end
+$var wire 1 * unknown $end
+$var wire 1 + devoe $end
+$var wire 1 , devclrn $end
+$var wire 1 - devpor $end
+$var wire 1 . ww_devoe $end
+$var wire 1 / ww_devclrn $end
+$var wire 1 0 ww_devpor $end
+$var wire 1 1 ww_clk $end
+$var wire 1 2 ww_load $end
+$var wire 1 3 ww_nSet $end
+$var wire 1 4 ww_nRst $end
+$var wire 1 5 ww_A $end
+$var wire 1 6 ww_B $end
+$var wire 1 7 ww_Y $end
+$var wire 1 8 \Y~output_o\ $end
+$var wire 1 9 \clk~input_o\ $end
+$var wire 1 : \B~input_o\ $end
+$var wire 1 ; \A~input_o\ $end
+$var wire 1 < \load~input_o\ $end
+$var wire 1 = \nSet~input_o\ $end
+$var wire 1 > \nRst~input_o\ $end
+$var wire 1 ? \ff|Q~1_combout\ $end
+$var wire 1 @ \ff|Q~3_combout\ $end
+$var wire 1 A \ff|Q~0_combout\ $end
+$var wire 1 B \ff|Q~_emulated_q\ $end
+$var wire 1 C \ff|Q~2_combout\ $end
+$var wire 1 D \ff|ALT_INV_Q~_emulated_q\ $end
+$var wire 1 E \ff|ALT_INV_Q~0_combout\ $end
+$var wire 1 F \ff|ALT_INV_Q~1_combout\ $end
+$var wire 1 G \ALT_INV_nSet~input_o\ $end
+$var wire 1 H \ALT_INV_nRst~input_o\ $end
+$var wire 1 I \ALT_INV_B~input_o\ $end
+$var wire 1 J \ALT_INV_A~input_o\ $end
+$var wire 1 K \ALT_INV_load~input_o\ $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1!
+1"
+0#
+0$
+1%
+0&
+1'
+0(
+1)
+x*
+1+
+1,
+1-
+1.
+1/
+10
+01
+02
+03
+14
+15
+16
+17
+18
+09
+1:
+1;
+0<
+0=
+1>
+1?
+1@
+1A
+0B
+1C
+1D
+0E
+0F
+1G
+0H
+0I
+0J
+1K
+$end
+#10000
+1$
+12
+1<
+0K
+0@
+#30000
+1#
+11
+19
+#40000
+0$
+02
+0<
+1K
+1@
+#60000
+0#
+01
+09
+#90000
+1#
+0!
+0"
+11
+05
+06
+0:
+0;
+19
+1J
+1I
+#120000
+0#
+01
+09
+#130000
+1$
+12
+1<
+0K
+#150000
+1#
+11
+19
+#170000
+0$
+1!
+1"
+02
+15
+16
+1:
+1;
+0<
+1K
+0J
+0I
+#180000
+0#
+01
+09
+#210000
+1#
+11
+19
+#240000
+0#
+01
+09
+#270000
+1#
+11
+19
+#300000
+0#
+01
+09
+#330000
+1#
+11
+19
+#340000
+0"
+06
+0:
+1I
+#360000
+0#
+01
+09
+#390000
+1#
+11
+19
+#420000
+0#
+01
+09
+#430000
+1$
+12
+1<
+0K
+0@
+#450000
+1#
+11
+19
+#470000
+0$
+02
+0<
+1K
+1@
+#480000
+0#
+01
+09
+#490000
+0!
+05
+0;
+1J
+#510000
+1#
+11
+19
+#540000
+0#
+01
+09
+#570000
+1#
+1!
+1"
+11
+15
+16
+1:
+1;
+19
+0J
+0I
+#600000
+0#
+01
+09
+#630000
+1#
+11
+19
+#650000
+0!
+05
+0;
+1J
+#660000
+0#
+01
+09
+#690000
+1#
+11
+19
+#720000
+0#
+01
+09
+#730000
+1$
+12
+1<
+0K
+0@
+#750000
+1#
+11
+19
+#770000
+0$
+02
+0<
+1K
+1@
+#780000
+0#
+0"
+01
+06
+0:
+09
+1I
+#810000
+1#
+11
+19
+#840000
+0#
+01
+09
+#870000
+1#
+11
+19
+#900000
+0#
+01
+09
+#930000
+1#
+11
+19
+#960000
+0#
+01
+09
+#970000
+1"
+1!
+16
+15
+1;
+1:
+0I
+0J
+#980000
+0"
+0!
+06
+05
+0;
+0:
+1I
+1J
+#990000
+1#
+11
+19
+#1000000
