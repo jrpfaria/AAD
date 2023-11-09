@@ -15,15 +15,17 @@ USE shiftRegister8.all;
 
 ENTITY Encoder IS
     PORT (
-        clk, sIn, rst: IN STD_LOGIC;
-        dOut:          OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
+        clk, sIn, nGRst: IN STD_LOGIC;
+        dOut:          OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+		  cont:			  OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+		  statO:				OUT STD_LOGIC_VECTOR (5 DOWNTO 0)
     );
 END Encoder;
 
 ARCHITECTURE structure OF Encoder IS
-    SIGNAL iNSet, iNRst, iDIn, clkO: STD_LOGIC;
-    SIGNAL tCntI: STD_LOGIC_VECTOR (4 DOWNTO 0);
-    SIGNAL tCntO: STD_LOGIC_VECTOR (5 DOWNTO 0);
+    SIGNAL iNSet, iNRst, clkO: STD_LOGIC;
+    SIGNAL bbI: STD_LOGIC_VECTOR (8 DOWNTO 0);
+    SIGNAL bbO: STD_LOGIC_VECTOR (7 DOWNTO 0);
     SIGNAL stat:  STD_LOGIC_VECTOR (5 DOWNTO 0);
     COMPONENT shiftRegister8
         PORT (
@@ -65,8 +67,14 @@ ARCHITECTURE structure OF Encoder IS
         );
     END COMPONENT;
     BEGIN
-        bb1: BuildingBlock1 PORT MAP ()
-        pr8: parReg_8bit PORT MAP (iNSet, clkO, ----, cnt);
-        bc:  binCounter_6bit PORT MAP (iNRst, clk, stat);
-        con: control  PORT MAP (nGRst, clk, stat, iNRst, INSet, clkO);
+		sr: shiftRegister8 PORT MAP (clk, '1', nGRst, '0', sIn, bbO, bbI(8 DOWNTO 1));
+		bbI(0) <= sIn;
+		bb1: BuildingBlock1 PORT MAP (bbI, bbO);
+		pr8: parReg_8bit PORT MAP(INSet, clkO, bbO, dOut);
+		bc:  binCounter_6bit PORT MAP (iNRst, clk, stat);
+		con: control  PORT MAP (nGRst, clk, stat, iNRst, iNSet, clkO);
+		statO <= stat;
+		cont(0) <= iNRst;
+		cont(1) <= iNSet;
+		cont(2) <= clkO;
 END structure;

@@ -19,9 +19,9 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "11/08/2023 16:47:43"
+-- Generated on "11/09/2023 22:49:17"
                                                              
--- Vhdl Test Bench(with test vectors) for design  :          shiftRegister
+-- Vhdl Test Bench(with test vectors) for design  :          Encoder
 -- 
 -- Simulation tool : 3rd Party
 -- 
@@ -29,134 +29,64 @@
 LIBRARY ieee;                                               
 USE ieee.std_logic_1164.all;                                
 
-ENTITY shiftRegister_vhd_vec_tst IS
-END shiftRegister_vhd_vec_tst;
-ARCHITECTURE shiftRegister_arch OF shiftRegister_vhd_vec_tst IS
+ENTITY Encoder_vhd_vec_tst IS
+END Encoder_vhd_vec_tst;
+ARCHITECTURE Encoder_arch OF Encoder_vhd_vec_tst IS
 -- constants                                                 
 -- signals                                                   
-SIGNAL A : STD_LOGIC;
-SIGNAL B : STD_LOGIC;
 SIGNAL clk : STD_LOGIC;
-SIGNAL load : STD_LOGIC;
-SIGNAL nRst : STD_LOGIC;
-SIGNAL nSet : STD_LOGIC;
-SIGNAL Y : STD_LOGIC;
-COMPONENT shiftRegister
+SIGNAL cont : STD_LOGIC_VECTOR(2 DOWNTO 0);
+SIGNAL dOut : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL nGRst : STD_LOGIC;
+SIGNAL sIn : STD_LOGIC;
+SIGNAL statO : STD_LOGIC_VECTOR(5 DOWNTO 0);
+COMPONENT Encoder
 	PORT (
-	A : IN STD_LOGIC;
-	B : IN STD_LOGIC;
 	clk : IN STD_LOGIC;
-	load : IN STD_LOGIC;
-	nRst : IN STD_LOGIC;
-	nSet : IN STD_LOGIC;
-	Y : OUT STD_LOGIC
+	cont : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+	dOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	nGRst : IN STD_LOGIC;
+	sIn : IN STD_LOGIC;
+	statO : OUT STD_LOGIC_VECTOR(5 DOWNTO 0)
 	);
 END COMPONENT;
 BEGIN
-	i1 : shiftRegister
+	i1 : Encoder
 	PORT MAP (
 -- list connections between master ports and signals
-	A => A,
-	B => B,
 	clk => clk,
-	load => load,
-	nRst => nRst,
-	nSet => nSet,
-	Y => Y
+	cont => cont,
+	dOut => dOut,
+	nGRst => nGRst,
+	sIn => sIn,
+	statO => statO
 	);
-
--- load
-t_prcs_load: PROCESS
-BEGIN
-	load <= '0';
-	WAIT FOR 10000 ps;
-	load <= '1';
-	WAIT FOR 30000 ps;
-	load <= '0';
-	WAIT FOR 90000 ps;
-	load <= '1';
-	WAIT FOR 40000 ps;
-	load <= '0';
-	WAIT FOR 260000 ps;
-	load <= '1';
-	WAIT FOR 40000 ps;
-	load <= '0';
-	WAIT FOR 260000 ps;
-	load <= '1';
-	WAIT FOR 40000 ps;
-	load <= '0';
-WAIT;
-END PROCESS t_prcs_load;
 
 -- clk
 t_prcs_clk: PROCESS
 BEGIN
-	FOR i IN 1 TO 16
-	LOOP
-		clk <= '0';
-		WAIT FOR 30000 ps;
-		clk <= '1';
-		WAIT FOR 30000 ps;
-	END LOOP;
+LOOP
 	clk <= '0';
-	WAIT FOR 30000 ps;
+	WAIT FOR 5000 ps;
 	clk <= '1';
-WAIT;
+	WAIT FOR 5000 ps;
+	IF (NOW >= 1000000 ps) THEN WAIT; END IF;
+END LOOP;
 END PROCESS t_prcs_clk;
 
--- A
-t_prcs_A: PROCESS
+-- nGRst
+t_prcs_nGRst: PROCESS
 BEGIN
-	A <= '1';
-	WAIT FOR 90000 ps;
-	A <= '0';
-	WAIT FOR 80000 ps;
-	A <= '1';
-	WAIT FOR 320000 ps;
-	A <= '0';
-	WAIT FOR 80000 ps;
-	A <= '1';
-	WAIT FOR 80000 ps;
-	A <= '0';
-	WAIT FOR 320000 ps;
-	A <= '1';
+	nGRst <= '0';
 	WAIT FOR 10000 ps;
-	A <= '0';
+	nGRst <= '1';
 WAIT;
-END PROCESS t_prcs_A;
+END PROCESS t_prcs_nGRst;
 
--- B
-t_prcs_B: PROCESS
+-- sIn
+t_prcs_sIn: PROCESS
 BEGIN
-	B <= '1';
-	WAIT FOR 90000 ps;
-	B <= '0';
-	WAIT FOR 80000 ps;
-	B <= '1';
-	WAIT FOR 170000 ps;
-	B <= '0';
-	WAIT FOR 230000 ps;
-	B <= '1';
-	WAIT FOR 210000 ps;
-	B <= '0';
-	WAIT FOR 190000 ps;
-	B <= '1';
-	WAIT FOR 10000 ps;
-	B <= '0';
+	sIn <= '0';
 WAIT;
-END PROCESS t_prcs_B;
-
--- nRst
-t_prcs_nRst: PROCESS
-BEGIN
-	nRst <= '1';
-WAIT;
-END PROCESS t_prcs_nRst;
-
--- nSet
-t_prcs_nSet: PROCESS
-BEGIN
-	nSet <= '0';
-WAIT;
-END PROCESS t_prcs_nSet;
-END shiftRegister_arch;
+END PROCESS t_prcs_sIn;
+END Encoder_arch;
