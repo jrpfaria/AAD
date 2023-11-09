@@ -41,3 +41,34 @@ ARCHITECTURE structure OF shiftRegister8 IS
 		parallelOut(6) <= f6;
 		ff7 : flipFlop2_1 PORT MAP (clk, load, nSet, nRst, f6, parallelIn(7), parallelOut(7));
 END structure;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY parReg_8bit IS
+	PORT (
+		nSet: IN STD_LOGIC;
+		clk: IN STD_LOGIC;
+		D: IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+		Q: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
+	);
+END parReg_8bit;
+
+ARCHITECTURE structure OF parReg_8bit IS
+	COMPONENT flipFlopDPET
+		PORT (
+			clk, D:     IN  STD_LOGIC;
+			nSet, nRst: IN  STD_LOGIC;
+			Q, nQ:      OUT STD_LOGIC
+		);
+	END COMPONENT;
+	BEGIN
+		ff0: flipFlopDPET PORT MAP (clk, D(0), nSet, '1', Q(0));
+		ff1: flipFlopDPET PORT MAP (clk, D(1), nSet, '1', Q(1));
+		ff2: flipFlopDPET PORT MAP (clk, D(2), nSet, '1', Q(2));
+		ff3: flipFlopDPET PORT MAP (clk, D(3), nSet, '1', Q(3));
+		ff4: flipFlopDPET PORT MAP (clk, D(4), nSet, '1', Q(4));
+		ff5: flipFlopDPET PORT MAP (clk, D(5), nSet, '1', Q(5));
+		ff6: flipFlopDPET PORT MAP (clk, D(6), nSet, '1', Q(6));
+		ff7: flipFlopDPET PORT MAP (clk, D(7), nSet, '1', Q(7));
+END structure;
