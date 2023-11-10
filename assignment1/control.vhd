@@ -28,8 +28,8 @@ BEGIN
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   0d
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   0e
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   0f
-                            CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   10
-                            CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   11
+                            CONV_STD_LOGIC_VECTOR (16#6#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 0   10
+                            CONV_STD_LOGIC_VECTOR (16#3#, 3),  -- nRst = 0   nSetO = 1   nEnClk = 1   11
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   12
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   13
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   14
@@ -44,8 +44,8 @@ BEGIN
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   1d
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   1e
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   1f
-                            CONV_STD_LOGIC_VECTOR (16#6#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 0   20
-                            CONV_STD_LOGIC_VECTOR (16#3#, 3),  -- nRst = 0   nSetO = 1   nEnClk = 1   21
+                            CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   20
+                            CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   21
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   22
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   23
                             CONV_STD_LOGIC_VECTOR (16#7#, 3),  -- nRst = 1   nSetO = 1   nEnClk = 1   24

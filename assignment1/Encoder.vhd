@@ -15,14 +15,17 @@ USE shiftRegister8.all;
 
 ENTITY Encoder IS
     PORT (
-        clk, sIn, nGRst: IN STD_LOGIC;
-        dOut:          OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		  cont:			  OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
-		  statO:				OUT STD_LOGIC_VECTOR (5 DOWNTO 0)
+        clk, sIn, nGRst: IN  STD_LOGIC;
+        dOut:            OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+		cont:			 OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+		statO:			 OUT STD_LOGIC_VECTOR (5 DOWNTO 0);
+        bbIO:            OUT STD_LOGIC_VECTOR (8 DOWNTO 0);
+        bbOO:            OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
     );
 END Encoder;
 
 ARCHITECTURE structure OF Encoder IS
+    SIGNAL ffo: STD_LOGIC;
     SIGNAL iNSet, iNRst, clkO: STD_LOGIC;
     SIGNAL bbI: STD_LOGIC_VECTOR (8 DOWNTO 0);
     SIGNAL bbO: STD_LOGIC_VECTOR (7 DOWNTO 0);
@@ -66,9 +69,19 @@ ARCHITECTURE structure OF Encoder IS
             clkO:  OUT STD_LOGIC
         );
     END COMPONENT;
+    COMPONENT flipFlopDPET
+		PORT (
+			clk, D		: IN STD_LOGIC;
+			nSet, nRst 	: IN STD_LOGIC;
+			Q, nQ			: OUT STD_LOGIC
+		);
+	END COMPONENT;
     BEGIN
-		sr: shiftRegister8 PORT MAP (clk, '1', nGRst, '0', sIn, bbO, bbI(8 DOWNTO 1));
-		bbI(0) <= sIn;
+        ff: flipFlopDPET PORT MAP (clk, sIn, '1', nGRst, ffO, open);
+		sr: shiftRegister8 PORT MAP (clk, iNRst, iNRst, '1', '1', bbO, bbI(8 DOWNTO 1));
+		bbI(0) <= ffO;
+        bbIO <= bbI;
+        bbOO <= bbO;
 		bb1: BuildingBlock1 PORT MAP (bbI, bbO);
 		pr8: parReg_8bit PORT MAP(INSet, clkO, bbO, dOut);
 		bc:  binCounter_6bit PORT MAP (iNRst, clk, stat);
