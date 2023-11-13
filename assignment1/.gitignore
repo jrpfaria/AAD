@@ -5,3 +5,4 @@ simulation/
 assignment1.qws
 *.bak
 *.vwf
+__pycache__/
