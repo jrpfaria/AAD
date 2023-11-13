@@ -25,10 +25,9 @@ def func_cost(state,action):
     xors = set()
     new_state = func_result(state,action)
     for eq in new_state:
-            for xor in eq:
+            for xor in eq[0]:
                 if len(xor)!=1:
                     xors.add(xor)
-    last_cost = len(xors)
     return len(xors)
 
 def func_satisfies(state):
