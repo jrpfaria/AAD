@@ -2,7 +2,7 @@ from remainder import *
 from my_tree_search import *
 
 eq = []
-#eq.append([0,1,3,5,7,12,13])
+eq.append([0,1,3,5,7,12,13])
 eq.append([1,2,3,4,5,6,7,11,13,15])
 #eq.append([0,1,2,3,4,5,6,10,12,14])
 #eq.append([2,4,7,9,11,12,15])

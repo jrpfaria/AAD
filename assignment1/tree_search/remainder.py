@@ -2,32 +2,48 @@ import itertools
 
 from tree_search import *
 
+def all_pairs(lst):
+    if len(lst) < 2:
+        yield []
+        return
+    if len(lst) % 2 == 1:
+        # Handle odd length list
+        for i in range(len(lst)):
+            for result in all_pairs(lst[:i] + lst[i+1:]):
+                yield result
+    else:
+        a = lst[0]
+        for i in range(1,len(lst)):
+            pair = frozenset((a,lst[i]))
+            for rest in all_pairs(lst[1:i]+lst[i+1:]):
+                yield [pair] + rest
+
 def func_actions(state):
-    perms = []
-    for s in state:
-        perms.append(list(itertools.permutations(s)))
-    return list(itertools.product(*perms))
+    pairings = []
+    for eq in state:
+        pairings.append(list(all_pairs(eq)))
+    actions = list(itertools.product(*pairings))
+    return actions
 
 def func_result(state, action):
-    new_state = []
-    end = 0
+    action = list(action)
+    new_state = action
     for i in range(len(state)):
-        new_state.append([])
-        parity = len(action[i])%2
-        end = len(action[i]) - parity - 1
-        for j in range(0,end,2):
-            new_state[i].append(frozenset([action[i][j], action[i][j+1]]))
-        if parity==1:
-            new_state[i].append(frozenset(action[i][end+1]))
+        for j in range(len(state[i])):
+            found = False
+            for k in range(len(action[i])):
+                if state[i][j] in action[i][k]:
+                    found = True
+            if not found:
+                new_state[i].append(frozenset((state[i][j],)))
     return new_state
 
-def func_cost(state,action):
+def func_cost(state,newstate):
     xors = set()
-    new_state = func_result(state,action)
-    for eq in new_state:
-            for xor in eq[0]:
-                if len(xor)!=1:
-                    xors.add(xor)
+    for eq in newstate[1]:
+        for xor in eq:
+            if len(xor)!=1:
+                xors.add(xor)
     return len(xors)
 
 def func_satisfies(state):
