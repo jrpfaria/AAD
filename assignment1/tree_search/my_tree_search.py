@@ -18,6 +18,7 @@ class MyTree(SearchTree):
         super().__init__(problem,strategy)
         self.optimize = optimize
         self.keep = keep
+        self.current_depth = 0
         if self.optimize>=2:
             domainT = SearchDomainTuple(self.problem[0][0],self.problem[0][1],self.problem[0][2],self.problem[0][3],self.problem[0][4],self.problem[0][5])
             problemT = SearchProblemTuple(domainT,self.problem[1],self.problem[2])
@@ -58,6 +59,9 @@ class MyTree(SearchTree):
             nodeID = self.open_nodes.pop(0)
             self.closed_nodes.append(nodeID)
             node = self.all_nodes[nodeID]
+            if node.depth>self.current_depth:
+                self.current_depth = node.depth
+                print(self.current_depth)
             if self.optimize>=2:
                 if self.problem.domain.satisfies(node.state,self.problem.goal):
                     self.solution = node
