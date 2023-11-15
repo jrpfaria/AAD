@@ -20,9 +20,12 @@ def all_pairs(lst):
 
 def func_actions(state):
     pairings = []
+    print("calculating all pairs")
     for eq in state:
-        pairings.append(list(all_pairs(eq)))
+        pairings.append((all_pairs(eq)))
+    print("calculating product")
     actions = list(itertools.product(*pairings))
+    print("done calculating product")
     return actions
 
 def func_result(state, action):
