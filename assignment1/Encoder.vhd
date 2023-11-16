@@ -56,13 +56,13 @@ ARCHITECTURE structure OF Encoder IS
     x00010814: gateXor2 PORT MAP (sx0001, sx0814, sx00010814);
     -- layer 3
     x7: gateXor2 PORT MAP (sx00050713, sx010312, dOut(7));
-    x4: gateXor2 PORT MAP (sx07091115, sx020412, sx6p);
-    x3: gateXor2 PORT MAP (sx01030614, sx081011, sx5p);
-    x2: gateXor2 PORT MAP (sx00050713, sx091002, dOut(4));
-    x0: gateXor2 PORT MAP (sx02040613, sx00010814, dOut(3));
-    x6p: gateXor2 PORT MAP (sx01030204, sx05070613, dOut(2));
-    x5p: gateXor2 PORT MAP (sx01030204, sx00051012, sx1p);
-    x1p: gateXor2 PORT MAP (sx00050713, sx03060408, dOut(0));
+    x4: gateXor2 PORT MAP (sx07091115, sx020412, dOut(4));
+    x3: gateXor2 PORT MAP (sx01030614, sx081011, dOut(3));
+    x2: gateXor2 PORT MAP (sx00050713, sx091002, dOut(2));
+    x0: gateXor2 PORT MAP (sx02040613, sx00010814, dOut(0));
+    x6p: gateXor2 PORT MAP (sx01030204, sx05070613, sx6p);
+    x5p: gateXor2 PORT MAP (sx01030204, sx00051012, sx5p);
+    x1p: gateXor2 PORT MAP (sx00050713, sx03060408, sx1p);
     -- layer 4
     x6: gateXor2 PORT MAP (sx6p, sx1115, dOut(6));
     x5: gateXor2 PORT MAP (sx5p, sx0614, dOut(5));
