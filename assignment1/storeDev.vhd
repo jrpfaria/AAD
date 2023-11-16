@@ -213,64 +213,17 @@ END structure;
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
-ENTITY parReg_24bit IS
-	PORT (
-		nSet: IN STD_LOGIC;
-		clk: IN STD_LOGIC;
-		D: IN STD_LOGIC_VECTOR (23 DOWNTO 0);
-		Q: OUT STD_LOGIC_VECTOR (23 DOWNTO 0)
-	);
-END parReg_24bit;
-
-ARCHITECTURE structure OF parReg_24bit IS
-	COMPONENT flipFlopDPET
-		PORT (
-			clk, D:     IN  STD_LOGIC;
-			nSet, nRst: IN  STD_LOGIC;
-			Q, nQ:      OUT STD_LOGIC
-		);
-	END COMPONENT;
-	BEGIN
-		ff0: flipFlopDPET PORT MAP (clk, D(0), nSet, '1', Q(0));
-		ff1: flipFlopDPET PORT MAP (clk, D(1), nSet, '1', Q(1));
-		ff2: flipFlopDPET PORT MAP (clk, D(2), nSet, '1', Q(2));
-		ff3: flipFlopDPET PORT MAP (clk, D(3), nSet, '1', Q(3));
-		ff4: flipFlopDPET PORT MAP (clk, D(4), nSet, '1', Q(4));
-		ff5: flipFlopDPET PORT MAP (clk, D(5), nSet, '1', Q(5));
-		ff6: flipFlopDPET PORT MAP (clk, D(6), nSet, '1', Q(6));
-		ff7: flipFlopDPET PORT MAP (clk, D(7), nSet, '1', Q(7));
-    ff8: flipFlopDPET PORT MAP (clk, D(8), nSet, '1', Q(8));
-		ff9: flipFlopDPET PORT MAP (clk, D(9), nSet, '1', Q(9));
-		ff10: flipFlopDPET PORT MAP (clk, D(10), nSet, '1', Q(10));
-		ff11: flipFlopDPET PORT MAP (clk, D(11), nSet, '1', Q(11));
-		ff12: flipFlopDPET PORT MAP (clk, D(12), nSet, '1', Q(12));
-		ff13: flipFlopDPET PORT MAP (clk, D(13), nSet, '1', Q(13));
-		ff14: flipFlopDPET PORT MAP (clk, D(14), nSet, '1', Q(14));
-		ff15: flipFlopDPET PORT MAP (clk, D(15), nSet, '1', Q(15));
-    ff16: flipFlopDPET PORT MAP (clk, D(16), nSet, '1', Q(16));
-    ff17: flipFlopDPET PORT MAP (clk, D(17), nSet, '1', Q(17));
-    ff18: flipFlopDPET PORT MAP (clk, D(18), nSet, '1', Q(18));
-    ff19: flipFlopDPET PORT MAP (clk, D(19), nSet, '1', Q(19));
-    ff20: flipFlopDPET PORT MAP (clk, D(20), nSet, '1', Q(20));
-    ff21: flipFlopDPET PORT MAP (clk, D(21), nSet, '1', Q(21));
-    ff22: flipFlopDPET PORT MAP (clk, D(22), nSet, '1', Q(22));
-    ff23: flipFlopDPET PORT MAP (clk, D(23), nSet, '1', Q(23));
-END structure;
-
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-
-ENTITY shiftReg_16bit IS
+ENTITY shiftReg_8bit IS
 	PORT (
 		nRst: IN STD_LOGIC;
 		clk: IN STD_LOGIC;
 		sIN: IN STD_LOGIC;
-		Q: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+		Q: OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
 	);
-END shiftReg_16bit;
+END shiftReg_8bit;
 
-ARCHITECTURE structure OF shiftReg_16bit IS
-  SIGNAL s: STD_LOGIC_VECTOR (15 DOWNTO 0);
+ARCHITECTURE structure OF shiftReg_8bit IS
+  SIGNAL s: STD_LOGIC_VECTOR (7 DOWNTO 0);
 	COMPONENT flipFlopDPET
 		PORT (
 			clk, D:     IN  STD_LOGIC;
@@ -287,13 +240,5 @@ ARCHITECTURE structure OF shiftReg_16bit IS
 		ff5: flipFlopDPET PORT MAP (clk, s(4), '1', nRst, s(5));
 		ff6: flipFlopDPET PORT MAP (clk, s(5), '1', nRst, s(6));
 		ff7: flipFlopDPET PORT MAP (clk, s(6), '1', nRst, s(7));
-    ff8: flipFlopDPET PORT MAP (clk, s(7), '1', nRst, s(8));
-    ff9: flipFlopDPET PORT MAP (clk, s(8), '1', nRst, s(9));
-    ff10: flipFlopDPET PORT MAP (clk, s(9), '1', nRst, s(10));
-    ff11: flipFlopDPET PORT MAP (clk, s(10), '1', nRst, s(11));
-    ff12: flipFlopDPET PORT MAP (clk, s(11), '1', nRst, s(12));
-    ff13: flipFlopDPET PORT MAP (clk, s(12), '1', nRst, s(13));
-    ff14: flipFlopDPET PORT MAP (clk, s(13), '1', nRst, s(14));
-    ff15: flipFlopDPET PORT MAP (clk, s(14), '1', nRst, s(15));
     Q <= s;
 END structure;
