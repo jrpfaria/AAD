@@ -6,8 +6,7 @@ USE simpleLogic.all;
 
 ENTITY Checker IS
     PORT (
-        dIn: IN  STD_LOGIC_VECTOR (24 DOWNTO 0);
-        dOut: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+        dIn: IN  STD_LOGIC_VECTOR (23 DOWNTO 0);
         err: OUT STD_LOGIC
     );
 END Checker;
@@ -93,5 +92,4 @@ ARCHITECTURE structure OF Checker IS
     or0123: gateOr2 PORT MAP(or01O, or23O, or0123O);
     or4567: gateOr2 PORT MAP(or45O, or67O, or4567O);
     orF: gateOr2 PORT MAP(or0123O, or4567O, err);
-    dOut <= sx7 & sx6 & sx5 & sx4 & sx3 & sx2 & sx1 & sx0;
 END structure;
