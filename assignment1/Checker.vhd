@@ -10,6 +10,12 @@ USE storeDev.all;
 LIBRARY BuildingBlock1;
 USE BuildingBlock1.all;
 
+LIBRARY control;
+USE control.all;
+
+LIBRARY Comparator8;
+USE Comparator8.all;
+
 ENTITY Checker IS
     PORT (
         clk, sIn, nGRst: IN  STD_LOGIC;
